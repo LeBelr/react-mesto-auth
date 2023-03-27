@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+export default function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
 
   const [cardName, setCardName] = useState('');
   const [cardLink, setCardLink] = useState('');
@@ -35,6 +35,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <input id="card-name-input" type="text" className="popup__input popup__input_type_add-card-name" name="name"
         placeholder="Название" required minLength="2" maxLength="30" value={cardName} onChange={handleChangeCardName} />

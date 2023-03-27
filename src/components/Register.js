@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
-export default function Register({ onRegister }) {
+export default function Register({ onRegister, isLoading }) {
   const [formValue, setFormValue] = useState({
     email: '',
     password: ''
@@ -37,7 +37,7 @@ export default function Register({ onRegister }) {
           <form className="register__form" onSubmit={handleSubmit}>
             <input type="email" className="register__input" name="email" placeholder="Email" minLength="2" maxLength="30" value={formValue.email || ''} required onChange={handleChange} />
             <input type="password" className="register__input" name="password" placeholder="Пароль" minLength="6" maxLength="20" value={formValue.password || ''} required onChange={handleChange} />
-            <button type="submit" className="register__submit" >Зарегистрироваться</button>
+            <button type="submit" className="register__submit" >{isLoading ? "Регистрация..." : "Зарегистрироваться"}</button>
           </form>
           <p className="register__signin">Уже зарегестрированы? <Link to="sign-in" className="register__signin-link">Войти</Link></p>
         </section>

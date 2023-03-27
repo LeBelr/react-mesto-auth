@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import PopupWithForm from "./PopupWithForm.js";
 
-export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
-    
+export default function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
+
     const currentUser = useContext(CurrentUserContext);
 
     const [name, setName] = useState('');
@@ -38,6 +38,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
             isOpen={isOpen}
             onClose={onClose}
             onSubmit={handleSubmit}
+            isLoading={isLoading}
         >
             <input id="profile-name-input" type="text" className="popup__input popup__input_type_edit-profile-name"
                 name="name" placeholder="Имя" required minLength="2" maxLength="40" value={name || ''} onChange={handleChangeName} />
